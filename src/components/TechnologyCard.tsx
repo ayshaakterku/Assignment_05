@@ -15,9 +15,7 @@ export default function TechnologyCard({ tech, isSelected, onToggle }: Props) {
       }`}
     >
       <div className="flex items-start justify-between">
-        <span className="text-3xl" aria-hidden="true">
-          {tech.icon}
-        </span>
+        <img src={tech.icon} alt="" className="text-3xl h-[40px] w-[40px]" aria-hidden="true"/>
         <span className={`rounded-full px-3 py-1 text-xs font-medium`}>
           {tech.badge}
         </span>
