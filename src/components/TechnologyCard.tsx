@@ -43,7 +43,7 @@ export default function TechnologyCard({ tech, isSelected, onToggle }: Props) {
         aria-pressed={isSelected}
         className={`mt-5 w-full rounded-lg py-2.5 text-sm font-semibold transition ${
           isSelected
-            ? 'border border-slate-300 bg-white text-slate-700 hover:bg-slate-50'
+            ? 'border  border-rose-200 bg-white text-rose-500 hover:bg-rose-50'
             : 'bg-slate-900 text-white hover:bg-slate-800'
         }`}
       >
