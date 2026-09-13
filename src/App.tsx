@@ -31,7 +31,8 @@ function App() {
 
 // Now a flat array of selected technologies — no per-category
   useEffect(() => {
-  fetch('/data/technologies.json')
+  // fetch('/data/technologies.json')
+  fetch('/technologies.json')
     .then((res) => {
       if (!res.ok) throw new Error('Failed to load data')
       return res.json()
