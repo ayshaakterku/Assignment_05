@@ -16,9 +16,9 @@
 .bg-pink-violet-gradient {
   background: linear-gradient(
     to right,
-    #DB2777 50%,
+    /* #DB2777 50%, */
     #EC4899 70%,
-    #8B5CF6 120%
+    #8B5CF6 150%
   );
 
   -webkit-background-clip: text;
