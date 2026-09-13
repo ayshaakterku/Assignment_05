@@ -1,3 +1,4 @@
+import logo from "../assets/logo-text.png"
 const columns = [
   {
     title: 'Product',
@@ -19,12 +20,7 @@ export default function Footer() {
       <div className="mx-auto grid max-w-7xl gap-10 px-6 py-14 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div>
           <div className="flex items-center gap-2">
-            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-gradient text-xs font-bold text-white">
-              DS
-            </span>
-            <span className="text-base font-bold text-slate-900">
-              Dev<span className="text-brand-pink">Stack</span>
-            </span>
+            <img src={logo} alt="Development Stack" className="h-auto w-32"/>
           </div>
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-slate-500">
             Curated tools, technologies, and resources for developers building modern software.
