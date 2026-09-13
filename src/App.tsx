@@ -98,7 +98,7 @@ function App() {
 
       <section id="technologies" className="mx-auto max-w-7xl px-6 pb-24">
         <h2 className="text-3xl font-extrabold text-slate-900 sm:text-4xl">
-          Explore the <span className="text-brand-pink">Technologies</span>
+          Explore the <span className="bg-pink-violet-gradient ">Technologies</span>
         </h2>
         <p className="mt-2 text-slate-500">Pick as many technologies as you like to build your ideal stack.</p>
 
