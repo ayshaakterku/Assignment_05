@@ -1,12 +1,27 @@
-import { useEffect, useMemo, useState } from 'react'
-import Header from './components/Header'
-import Hero from './components/Hero'
-import TechnologyCard from './components/TechnologyCard'
-import YourStackPanel from './components/YourStackPanel'
-import Footer from './components/Footer'
-import type { Technology } from './components/type'
+import { useEffect, useMemo, useState } from 'react';
+import Header from './components/Header';
+import Hero from './components/Hero';
+import TechnologyCard from './components/TechnologyCard';
+import YourStackPanel from './components/YourStackPanel';
+import Footer from './components/Footer';
+import type { Technology } from './components/type';
+import { toast, Bounce } from 'react-toastify';
 
-export default function App() {
+const toastOptions = {
+  position: 'top-center' as const,
+  autoClose: 2000,
+  hideProgressBar: false,
+  closeOnClick: false,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+  theme: 'light' as const,
+  transition: Bounce,
+}
+
+
+
+function App() {
   const [technologies, setTechnologies] = useState<Technology[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -14,67 +29,59 @@ export default function App() {
   // Now a flat array of selected technologies — no per-category limit
   const [selected, setSelected] = useState<Technology[]>([])
 
+// Now a flat array of selected technologies — no per-category
   useEffect(() => {
-    const controller = new AbortController()
-
-    async function loadTechnologies() {
-      try {
-        setIsLoading(true)
-        setError(null)
-
-        const response = await fetch('/data/technologies.json', { signal: controller.signal })
-        if (!response.ok) {
-          throw new Error(`Request failed with status ${response.status}`)
-        }
-
-        const data: Technology[] = await response.json()
-        setTechnologies(data)
-
-        // Default selections (optional) — now just items in the array
-        const defaults = data.filter((t) => t.id === 'svelte' || t.id === 'redis')
-        // setSelected(defaults)
-      } catch (err) {
-        if ((err as Error).name !== 'AbortError') {
-          setError((err as Error).message)
-        }
-      } finally {
-        setIsLoading(false)
-      }
-    }
-
-    loadTechnologies()
-    return () => controller.abort()
-  }, [])
-
-  const selectedList = useMemo(() => selected, [selected])
-
-  // Toggle: add if not selected, remove if already selected — no per-category limit
-  function toggleTechnology(tech: Technology) {
-    setSelected((prev) => {
-      const isCurrentlySelected = prev.some((t) => t.id === tech.id)
-      if (isCurrentlySelected) {
-        return prev.filter((t) => t.id !== tech.id)
-      }
-      return [...prev, tech]
+  fetch('/data/technologies.json')
+    .then((res) => {
+      if (!res.ok) throw new Error('Failed to load data')
+      return res.json()
     })
+    .then((data: Technology[]) => setTechnologies(data))
+    .catch((err) => setError(err.message))
+    .finally(() => setIsLoading(false))
+}, []);
+
+  const selectedList = useMemo(() => selected, [selected]);
+
+  function toggleTechnology(tech: Technology) {
+    const isCurrentlySelected = selected.some((t) => t.id === tech.id)
+
+    if (isCurrentlySelected) {
+      toast.success(`${tech.name} removed from your stack`, toastOptions)
+      setSelected((prev) => prev.filter((t) => t.id !== tech.id))
+    } else {
+      toast.success(`${tech.name} added to your stack`, toastOptions)
+      setSelected((prev) => [...prev, tech])
+    }
   }
 
+// Individual Id removed from stack list
   function removeById(id: string) {
+    const tech = selected.find((t) => t.id === id)
+    if (tech) {
+      toast.success(`${tech.name} removed from your stack`, toastOptions)
+    }
     setSelected((prev) => prev.filter((t) => t.id !== id))
   }
 
+// All Id removed from stack list
   function removeAll() {
+    toast.success('All technologies removed from your stack', toastOptions)
     setSelected([])
   }
 
+
+  // Loading  message show when page will be loaded
   if (isLoading) {
     return (
       <div className="min-h-screen bg-white text-slate-900 flex items-center justify-center">
-        <p className="text-slate-500">Loading technologies…</p>
+        <p className="text-slate-500">Loading Technologies…</p>
       </div>
     )
   }
 
+
+  // Failed message show when data will be not loaded
   if (error) {
     return (
       <div className="min-h-screen bg-white text-slate-900 flex items-center justify-center">
@@ -82,9 +89,8 @@ export default function App() {
       </div>
     )
   }
-  // function removeAll() {
-  //   selectedList}({})
-  // }
+
+
   return (
     <div className="min-h-screen bg-white text-slate-900">
       <Header />
@@ -116,3 +122,6 @@ export default function App() {
     </div>
   )
 }
+
+
+export default App

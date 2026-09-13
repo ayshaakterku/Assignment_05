@@ -49,7 +49,7 @@ export default function YourStackPanel({ selected, onRemove, onRemoveAll }: Prop
       {selected.length > 0 && (
         <button
           onClick={onRemoveAll}
-          className="mt-5 w-full rounded-lg border border-rose-200 py-2.5 text-sm font-semibold text-rose-500 transition hover:bg-rose-50"
+          className="mt-5 w-full rounded-lg border border-rose-200 py-2.5 text-sm font-semibold text-rose-500 transition hover:bg-rose-50" 
         >
           Remove All
         </button>
