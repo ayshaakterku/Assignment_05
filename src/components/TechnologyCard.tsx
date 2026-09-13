@@ -16,9 +16,12 @@ export default function TechnologyCard({ tech, isSelected, onToggle }: Props) {
     >
       <div className="flex items-start justify-between">
         <img src={tech.icon} alt="" className="text-3xl h-[40px] w-[40px]" aria-hidden="true"/>
-        <span className={`rounded-full px-3 py-1 text-xs font-medium`}>
+
+
+        <span className="rounded-full px-3 py-1 text-xs font-medium" style={{ backgroundColor: `color-mix(in srgb, ${tech.badgeColor} 50%, transparent)`,}}>
           {tech.badge}
         </span>
+
       </div>
 
       <h3 className="mt-4 text-lg font-bold text-slate-900">{tech.name}</h3>
