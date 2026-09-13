@@ -1,4 +1,4 @@
-const navLinks = ['Home', 'Technologies', 'Projects', 'About'];
+const navLinks = ['Home', 'Technologies', 'Projects', 'About', 'Contact'];
 
 import logo from "../assets/logo-text.png";
 export default function Header(){
