@@ -16,7 +16,7 @@ const columns = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-slate-100 bg-white">
+    <footer id="about"  className="border-t border-slate-100 bg-white">
       <div className="mx-auto grid max-w-7xl gap-10 px-6 py-14 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div>
           <div className="flex items-center gap-2">
@@ -26,9 +26,9 @@ export default function Footer() {
             Curated tools, technologies, and resources for developers building modern software.
           </p>
           <div className="mt-4 flex gap-4 text-sm font-medium text-slate-600">
-            <a href="#" className="hover:text-slate-900">GitHub</a>
-            <a href="#" className="hover:text-slate-900">Twitter</a>
-            <a href="#" className="hover:text-slate-900">LinkedIn</a>
+            <a href="https://github.com/" target="_blank" className="hover:text-slate-900">GitHub</a>
+            <a href="https://x.com/" target="_blank" className="hover:text-slate-900">Twitter</a>
+            <a href="https://www.linkedin.com/" target="_blank" className="hover:text-slate-900">LinkedIn</a>
           </div>
         </div>
 

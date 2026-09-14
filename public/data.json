@@ -275,17 +275,6 @@
     "badgeColor": "#2088FF"
   },
   {
-    "id": "nginx",
-    "name": "Nginx",
-    "category": "DevOps",
-    "description": "A high-performance web server and reverse proxy commonly used for modern applications.",
-    "icon": "https://icon.icepanel.io/Technology/svg/Nginx.svg",
-    "rating": 4.7,
-    "difficulty": "Intermediate",
-    "badge": "Server",
-    "badgeColor": "#009639"
-  },
-  {
     "id": "git",
     "name": "Git",
     "category": "Tools",
@@ -306,17 +295,6 @@
     "difficulty": "Beginner-Friendly",
     "badge": "Popular",
     "badgeColor": "#181717"
-  },
-  {
-    "id": "vscode",
-    "name": "Visual Studio Code",
-    "category": "Tools",
-    "description": "A lightweight and extensible source-code editor developed by Microsoft.",
-    "icon": "https://icon.icepanel.io/Technology/svg/Visual-Studio-Code.svg",
-    "rating": 4.9,
-    "difficulty": "Beginner-Friendly",
-    "badge": "Popular",
-    "badgeColor": "#007ACC"
   },
   {
     "id": "postman",
